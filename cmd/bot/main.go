@@ -31,18 +31,7 @@ func main() {
 	commander := commands.NewCommander(bot, productService)
 
 	for update := range updates {
-		if update.Message == nil { // If we got a message
-			continue
-		}
-		switch update.Message.Command() {
-		case "help":
-			commander.Help(update.Message)
-		case "list":
-			commander.List(update.Message)
-		default:
-			commander.Default(update.Message)
-		}
-
+		commander.HandleUpdate(update)
 		//msg.ReplyToMessageID = update.Message.MessageID
 	}
 

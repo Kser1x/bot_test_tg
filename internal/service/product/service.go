@@ -11,3 +11,8 @@ func NewService() *Service {
 func (*Service) List() []Product {
 	return allProducts
 }
+
+// как то обработаь ошибку
+func (s *Service) Get(idx int) (*Product, error) {
+	return &allProducts[idx], nil
+}
